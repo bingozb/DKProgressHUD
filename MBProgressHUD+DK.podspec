@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-    s.name         = "DKProgressHUD"
+    s.name         = "MBProgressHUD+DK"
     s.version      = "1.0.0"
     s.ios.deployment_target = '8.0'
     s.summary      = "A simple second-dev of MBProgressHUD for Dankal."
