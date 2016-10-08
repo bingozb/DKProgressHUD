@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DKExampleViewController.h
 //  DKProgressHUDExample
 //
 //  Created by 庄槟豪 on 2016/10/8.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface DKExampleViewController : UIViewController
 
 @end
-
