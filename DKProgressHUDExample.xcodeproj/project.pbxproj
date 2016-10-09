@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D730D92C1DA9352700BE24AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D730D9291DA9352700BE24AD /* AppDelegate.m */; };
 		D730D9301DA9359600BE24AD /* DKExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D730D92F1DA9359600BE24AD /* DKExampleViewController.m */; };
+		D7695BC31DAA131600EF6E55 /* DKProgressHUDConst.m in Sources */ = {isa = PBXBuildFile; fileRef = D7695BC21DAA131600EF6E55 /* DKProgressHUDConst.m */; };
 		D795B68F1DA9273A005780F1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D795B68E1DA9273A005780F1 /* main.m */; };
 		D795B6981DA9273A005780F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D795B6961DA9273A005780F1 /* Main.storyboard */; };
 		D795B69A1DA9273A005780F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D795B6991DA9273A005780F1 /* Assets.xcassets */; };
@@ -23,6 +24,8 @@
 		D730D9291DA9352700BE24AD /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D730D92E1DA9359600BE24AD /* DKExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKExampleViewController.h; sourceTree = "<group>"; };
 		D730D92F1DA9359600BE24AD /* DKExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKExampleViewController.m; sourceTree = "<group>"; };
+		D7695BC11DAA131600EF6E55 /* DKProgressHUDConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKProgressHUDConst.h; sourceTree = "<group>"; };
+		D7695BC21DAA131600EF6E55 /* DKProgressHUDConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKProgressHUDConst.m; sourceTree = "<group>"; };
 		D795B68A1DA9273A005780F1 /* DKProgressHUDExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DKProgressHUDExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D795B68E1DA9273A005780F1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D795B6971DA9273A005780F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -102,6 +105,8 @@
 				D795B6A51DA931FA005780F1 /* DKProgressHUD.bundle */,
 				D795B6A61DA931FA005780F1 /* DKProgressHUD.h */,
 				D795B6A71DA931FA005780F1 /* DKProgressHUD.m */,
+				D7695BC11DAA131600EF6E55 /* DKProgressHUDConst.h */,
+				D7695BC21DAA131600EF6E55 /* DKProgressHUDConst.m */,
 				D795B6AA1DA931FA005780F1 /* MBProgressHUD.h */,
 				D795B6AB1DA931FA005780F1 /* MBProgressHUD.m */,
 			);
@@ -139,7 +144,7 @@
 				TargetAttributes = {
 					D795B6891DA9273A005780F1 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = G8M2K7562P;
+						DevelopmentTeam = 2AG5874Z98;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -182,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D730D9301DA9359600BE24AD /* DKExampleViewController.m in Sources */,
+				D7695BC31DAA131600EF6E55 /* DKProgressHUDConst.m in Sources */,
 				D795B6AF1DA931FA005780F1 /* MBProgressHUD.m in Sources */,
 				D795B68F1DA9273A005780F1 /* main.m in Sources */,
 				D795B6AD1DA931FA005780F1 /* DKProgressHUD.m in Sources */,
@@ -305,8 +311,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = G8M2K7562P;
+				DEVELOPMENT_TEAM = 2AG5874Z98;
 				INFOPLIST_FILE = DKProgressHUDExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.dankal.DKProgressHUDExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -317,8 +324,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = G8M2K7562P;
+				DEVELOPMENT_TEAM = 2AG5874Z98;
 				INFOPLIST_FILE = DKProgressHUDExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.dankal.DKProgressHUDExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";

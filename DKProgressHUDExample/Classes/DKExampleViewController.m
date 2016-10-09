@@ -7,11 +7,12 @@
 //
 
 #import "DKExampleViewController.h"
-
 #import "DKProgressHUD.h"
 
 @interface DKExampleViewController ()
-
+@property (nonatomic, weak) DKProgressHUD *hud;
+@property (nonatomic, assign) CGFloat progress;
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation DKExampleViewController
@@ -20,20 +21,48 @@
 {
     [super viewDidLoad];
     
-    [DKProgressHUD showLoadingWithStatus:@"正在连接网络" toView:self.view];
+    [self testProgressHUD];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hudClick) name:DKProgressHUDDidClickedNotification object:nil];
+}
+
+- (void)testProgressHUD
+{
+    [DKProgressHUD showLoadingWithStatus:@"Loading" toView:self.view];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [DKProgressHUD showErrorWithStatus:@"网络连接失败" toView:self.view];
+        [DKProgressHUD showInfoWithStatus:@"Warning" toView:self.view];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [DKProgressHUD showInfoWithStatus:@"网络连接正在恢复中" toView:self.view];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [DKProgressHUD showSuccessWithStatus:@"Success" toView:self.view];
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [DKProgressHUD showSuccessWithStatus:@"网络连接成功" toView:self.view];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [DKProgressHUD showErrorWithStatus:@"ERROR" toView:self.view];
                 
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    self.hud = [DKProgressHUD showProgressWithStatus:@"Progress" toView:self.view];
+                    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(testProgress) userInfo:nil repeats:YES];
+                });
             });
         });
     });
+}
+
+- (void)testProgress
+{
+    _progress += 0.01;
+    [self.hud setProgress:_progress];
+    if (_progress >= 1) {
+        _progress = 0;
+        [self.timer invalidate];
+        self.timer = nil;
+        [self testProgressHUD];
+    }
+}
+
+- (void)hudClick
+{
+    NSLog(@"HUD Did Cliked");
 }
 
 @end
