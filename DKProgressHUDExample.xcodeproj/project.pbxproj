@@ -15,7 +15,6 @@
 		D795B69D1DA9273A005780F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D795B69B1DA9273A005780F1 /* LaunchScreen.storyboard */; };
 		D795B6AC1DA931FA005780F1 /* DKProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D795B6A51DA931FA005780F1 /* DKProgressHUD.bundle */; };
 		D795B6AD1DA931FA005780F1 /* DKProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D795B6A71DA931FA005780F1 /* DKProgressHUD.m */; };
-		D795B6AE1DA931FA005780F1 /* DKProgressHUDConst.m in Sources */ = {isa = PBXBuildFile; fileRef = D795B6A91DA931FA005780F1 /* DKProgressHUDConst.m */; };
 		D795B6AF1DA931FA005780F1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D795B6AB1DA931FA005780F1 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
@@ -33,8 +32,6 @@
 		D795B6A51DA931FA005780F1 /* DKProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DKProgressHUD.bundle; sourceTree = "<group>"; };
 		D795B6A61DA931FA005780F1 /* DKProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKProgressHUD.h; sourceTree = "<group>"; };
 		D795B6A71DA931FA005780F1 /* DKProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKProgressHUD.m; sourceTree = "<group>"; };
-		D795B6A81DA931FA005780F1 /* DKProgressHUDConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKProgressHUDConst.h; sourceTree = "<group>"; };
-		D795B6A91DA931FA005780F1 /* DKProgressHUDConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKProgressHUDConst.m; sourceTree = "<group>"; };
 		D795B6AA1DA931FA005780F1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		D795B6AB1DA931FA005780F1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,8 +102,6 @@
 				D795B6A51DA931FA005780F1 /* DKProgressHUD.bundle */,
 				D795B6A61DA931FA005780F1 /* DKProgressHUD.h */,
 				D795B6A71DA931FA005780F1 /* DKProgressHUD.m */,
-				D795B6A81DA931FA005780F1 /* DKProgressHUDConst.h */,
-				D795B6A91DA931FA005780F1 /* DKProgressHUDConst.m */,
 				D795B6AA1DA931FA005780F1 /* MBProgressHUD.h */,
 				D795B6AB1DA931FA005780F1 /* MBProgressHUD.m */,
 			);
@@ -187,7 +182,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D730D9301DA9359600BE24AD /* DKExampleViewController.m in Sources */,
-				D795B6AE1DA931FA005780F1 /* DKProgressHUDConst.m in Sources */,
 				D795B6AF1DA931FA005780F1 /* MBProgressHUD.m in Sources */,
 				D795B68F1DA9273A005780F1 /* main.m in Sources */,
 				D795B6AD1DA931FA005780F1 /* DKProgressHUD.m in Sources */,

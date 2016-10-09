@@ -1,10 +1,10 @@
 //
 //  DKProgressHUD.h
-//  TestMBProgressHUD
+//  DKProgressHUD
 //
 //  Created by 庄槟豪 on 2016/10/8.
 //  Copyright © 2016年 cn.dankal. All rights reserved.
-//  基于MBProgressHUD的二次开发,封装一层最常用的方法,模仿SV提供两套最常用的样式.
+//  基于MBProgressHUD的二次开发,封装最常用的方法,模仿SV提供两套最常用的样式.
 
 #import "MBProgressHUD.h"
 
