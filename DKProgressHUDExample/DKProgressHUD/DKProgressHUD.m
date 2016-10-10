@@ -22,9 +22,14 @@
     return DKProgressHUDModeAnnularDeterminate;
 }
 
-+ (CGFloat)progressHUDInterval
++ (CGFloat)progressHUDIntervalDismiss
 {
     return 1.5;
+}
+
++ (CGFloat)progressHUDIntervalOvertime
+{
+    return MAXFLOAT;
 }
 
 + (BOOL)useCoverMask
@@ -46,6 +51,8 @@
 
 #pragma mark - Show Methods
 
+/**** Loading ****/
+
 + (instancetype)showLoading
 {
     return [self showLoadingToView:nil];
@@ -63,6 +70,8 @@
     hud.contentColor = [self tintColor];
     hud.userInteractionEnabled = [self useCoverMask];
     
+    [hud hideAnimated:YES afterDelay:[self progressHUDIntervalOvertime]];
+    
     return hud;
 }
 
@@ -78,6 +87,8 @@
     
     return hud;
 }
+
+/**** Progress ****/
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wenum-conversion"
@@ -113,6 +124,18 @@
 }
 #pragma clang diagnostic pop
 
+/**** Success ****/
+
++ (void)showSuccess
+{
+    [self showSuccessToView:nil];
+}
+
++ (void)showSuccessToView:(UIView *)view
+{
+    [self showStatus:nil statusImage:DKProgressHUDSuccessImageName view:view];
+}
+
 + (void)showSuccessWithStatus:(NSString *)status
 {
     [self showSuccessWithStatus:status toView:nil];
@@ -121,6 +144,18 @@
 + (void)showSuccessWithStatus:(NSString *)status toView:(UIView *)view
 {
     [self showStatus:status statusImage:DKProgressHUDSuccessImageName view:view];
+}
+
+/**** Error ****/
+
++ (void)showError
+{
+    [self showErrorToView:nil];
+}
+
++ (void)showErrorToView:(UIView *)view
+{
+    [self showStatus:nil statusImage:DKProgressHUDErrorImageName view:view];
 }
 
 + (void)showErrorWithStatus:(NSString *)status
@@ -133,6 +168,18 @@
     [self showStatus:status statusImage:DKProgressHUDErrorImageName view:view];
 }
 
+/**** Info ****/
+
++ (void)showInfo
+{
+    [self showInfoToView:nil];
+}
+
++ (void)showInfoToView:(UIView *)view
+{
+    [self showStatus:nil statusImage:DKProgressHUDInfoImageName view:view];
+}
+
 + (void)showInfoWithStatus:(NSString *)status
 {
     return [self showInfoWithStatus:status toView:nil];
@@ -143,6 +190,8 @@
     [self showStatus:status statusImage:DKProgressHUDInfoImageName view:view];
 }
 
+/**** Dismiss ****/
+
 + (void)dismiss
 {
     [self dismissForView:nil];
@@ -150,7 +199,7 @@
 
 + (void)dismissForView:(UIView *)view
 {
-    // 先把keyWindow上的hud隐藏
+    // 先把keyWindow上的HUD隐藏
     UIView *keyWindow = [[UIApplication sharedApplication].windows lastObject];
     [self hideHUDForView:keyWindow animated:YES];
 
@@ -181,7 +230,7 @@
     }
     hud.customView = [[UIImageView alloc] initWithImage:statusImg];
     
-    [hud hideAnimated:YES afterDelay:[self progressHUDInterval]];
+    [hud hideAnimated:YES afterDelay:[self progressHUDIntervalDismiss]];
 }
 
 #pragma mark - Events
