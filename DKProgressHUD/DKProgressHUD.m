@@ -10,42 +10,48 @@
 
 @implementation DKProgressHUD
 
-NSString *const successImage = @"success.png";
-NSString *const infoImage = @"info.png";
-NSString *const errorImage = @"error.png";
-NSString *const bundleName = @"DKProgressHUD.bundle";
-
 #pragma mark - Customization
 
 + (DKProgressHUDStyle)progressHUDStyle
 {
-    return DKProgressHUDStyleBlack; // 默认黑色样式
+    return DKProgressHUDStyleBlack;
 }
 
-+ (CGFloat)progressHUDInterval
++ (DKProgressHUDMode)progressHUDMode
+{
+    return DKProgressHUDModeAnnularDeterminate;
+}
+
++ (CGFloat)progressHUDIntervalDismiss
 {
     return 1.5;
+}
+
++ (CGFloat)progressHUDIntervalOvertime
+{
+    return MAXFLOAT;
+}
+
++ (BOOL)useCoverMask
+{
+    return NO;
 }
 
 #pragma mark - Getter && Setter
 
 + (UIColor *)tintColor
 {
-    if ([self progressHUDStyle] == DKProgressHUDStyleBlack) {
-        return [UIColor whiteColor];
-    }
-    return [UIColor blackColor];
+    return [self progressHUDStyle] == DKProgressHUDStyleBlack ? [UIColor whiteColor] : [UIColor blackColor];
 }
 
 + (UIColor *)backgroundColor
 {
-    if ([self progressHUDStyle] == DKProgressHUDStyleBlack) {
-        return [UIColor blackColor];
-    }
-    return [UIColor whiteColor];
+    return [self progressHUDStyle] == DKProgressHUDStyleBlack ? [UIColor blackColor] : [UIColor whiteColor];
 }
 
 #pragma mark - Show Methods
+
+/**** Loading ****/
 
 + (instancetype)showLoading
 {
@@ -54,13 +60,18 @@ NSString *const bundleName = @"DKProgressHUD.bundle";
 
 + (instancetype)showLoadingToView:(UIView *)view
 {
+    [self dismissForView:view];
+    
     view = view ? view : [[UIApplication sharedApplication].windows lastObject];
     
     DKProgressHUD *hud = [self showHUDAddedTo:view animated:YES];
     hud.bezelView.color = [self backgroundColor];
     hud.bezelView.layer.backgroundColor = [[self backgroundColor] CGColor];
     hud.contentColor = [self tintColor];
-    hud.userInteractionEnabled = NO;
+    hud.userInteractionEnabled = [self useCoverMask];
+    
+    [hud hideAnimated:YES afterDelay:[self progressHUDIntervalOvertime]];
+    
     return hud;
 }
 
@@ -77,6 +88,54 @@ NSString *const bundleName = @"DKProgressHUD.bundle";
     return hud;
 }
 
+/**** Progress ****/
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wenum-conversion"
++ (instancetype)showProgress
+{
+    DKProgressHUD *hud = [self showLoading];
+    hud.mode = [self progressHUDMode];
+    return hud;
+}
+
++ (instancetype)showProgressToView:(UIView *)view
+{
+    DKProgressHUD *hud = [self showLoadingToView:view];
+    hud.mode = [self progressHUDMode];
+    
+    return hud;
+}
+
++ (instancetype)showProgressWithStatus:(NSString *)status
+{
+    DKProgressHUD *hud = [self showLoadingWithStatus:status];
+    hud.mode = [self progressHUDMode];
+    
+    return hud;
+}
+
++ (instancetype)showProgressWithStatus:(NSString *)status toView:(UIView *)view
+{
+    DKProgressHUD *hud = [self showLoadingWithStatus:status toView:view];
+    hud.mode = [self progressHUDMode];
+    
+    return hud;
+}
+#pragma clang diagnostic pop
+
+/**** Success ****/
+
++ (void)showSuccess
+{
+    [self showSuccessToView:nil];
+}
+
++ (void)showSuccessToView:(UIView *)view
+{
+    [self showStatus:nil statusImage:DKProgressHUDSuccessImageName view:view];
+}
+
 + (void)showSuccessWithStatus:(NSString *)status
 {
     [self showSuccessWithStatus:status toView:nil];
@@ -84,7 +143,19 @@ NSString *const bundleName = @"DKProgressHUD.bundle";
 
 + (void)showSuccessWithStatus:(NSString *)status toView:(UIView *)view
 {
-    [self showStatus:status statusImage:successImage view:view];
+    [self showStatus:status statusImage:DKProgressHUDSuccessImageName view:view];
+}
+
+/**** Error ****/
+
++ (void)showError
+{
+    [self showErrorToView:nil];
+}
+
++ (void)showErrorToView:(UIView *)view
+{
+    [self showStatus:nil statusImage:DKProgressHUDErrorImageName view:view];
 }
 
 + (void)showErrorWithStatus:(NSString *)status
@@ -94,7 +165,19 @@ NSString *const bundleName = @"DKProgressHUD.bundle";
 
 + (void)showErrorWithStatus:(NSString *)status toView:(UIView *)view
 {
-    [self showStatus:status statusImage:errorImage view:view];
+    [self showStatus:status statusImage:DKProgressHUDErrorImageName view:view];
+}
+
+/**** Info ****/
+
++ (void)showInfo
+{
+    [self showInfoToView:nil];
+}
+
++ (void)showInfoToView:(UIView *)view
+{
+    [self showStatus:nil statusImage:DKProgressHUDInfoImageName view:view];
 }
 
 + (void)showInfoWithStatus:(NSString *)status
@@ -104,8 +187,10 @@ NSString *const bundleName = @"DKProgressHUD.bundle";
 
 + (void)showInfoWithStatus:(NSString *)status toView:(UIView *)view
 {
-    [self showStatus:status statusImage:infoImage view:view];
+    [self showStatus:status statusImage:DKProgressHUDInfoImageName view:view];
 }
+
+/**** Dismiss ****/
 
 + (void)dismiss
 {
@@ -114,35 +199,45 @@ NSString *const bundleName = @"DKProgressHUD.bundle";
 
 + (void)dismissForView:(UIView *)view
 {
-    view = view ? view : [[UIApplication sharedApplication].windows lastObject];
-    [self hideHUDForView:view animated:YES];
+    // 先把keyWindow上的HUD隐藏
+    UIView *keyWindow = [[UIApplication sharedApplication].windows lastObject];
+    [self hideHUDForView:keyWindow animated:YES];
+
+    if (view) [self hideHUDForView:view animated:YES];
 }
 
-#pragma mark - private method
+#pragma mark - Private Method
 
 + (void)showStatus:(NSString *)status statusImage:(NSString *)statusImage view:(UIView *)view
 {
-    view = view ? view : [[UIApplication sharedApplication].windows lastObject];
-
     [self dismissForView:view];
+    
+    view = view ? view : [[UIApplication sharedApplication].windows lastObject];
     
     DKProgressHUD *hud = [self showHUDAddedTo:view animated:YES];
     hud.mode = MBProgressHUDModeCustomView;
-    hud.userInteractionEnabled = NO;
     hud.bezelView.color = [self backgroundColor];
     hud.label.text = status;
     hud.contentColor = [self tintColor];
+    hud.userInteractionEnabled = [self useCoverMask];
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSURL *url = [bundle URLForResource:bundleName withExtension:nil];
+    NSURL *url = [bundle URLForResource:DKProgressHUDBundleName withExtension:nil];
     NSBundle *imageBundle = [NSBundle bundleWithURL:url];
-    UIImage* statusImg = [UIImage imageWithContentsOfFile:[imageBundle pathForResource:statusImage ofType:nil]];
+    UIImage *statusImg = [UIImage imageWithContentsOfFile:[imageBundle pathForResource:statusImage ofType:nil]];
     if ([self progressHUDStyle] == DKProgressHUDStyleBlack) {
         statusImg = [statusImg imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     }
     hud.customView = [[UIImageView alloc] initWithImage:statusImg];
     
-    [hud hideAnimated:YES afterDelay:[self progressHUDInterval]];
+    [hud hideAnimated:YES afterDelay:[self progressHUDIntervalDismiss]];
+}
+
+#pragma mark - Events
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:DKProgressHUDDidClickedNotification object:nil];
 }
 
 @end
