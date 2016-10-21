@@ -8,6 +8,7 @@
 
 #import "MBProgressHUD.h"
 #import "DKProgressHUDConst.h"
+#import "DKCallbackMessage.h"
 
 typedef NS_ENUM(NSInteger, DKProgressHUDStyle) {
     DKProgressHUDStyleBlack,
@@ -61,7 +62,7 @@ typedef NS_ENUM(NSInteger, DKProgressHUDMode) {
 // showXxx ...          : 把HUD展示到keyWindow上. 不推荐使用
 // showXxx ... toView:  : 把HUD展示到view上.      建议使用这种方法
 
-// 在同一个view上show多次时, 默认会将view上原有的HUD隐藏, 不需要手动dismiss
+// 在同一个view上show多次时, 默认会将view上原有的HUD隐藏, 不需要手动dismiss.
 
 + (instancetype)showLoading;
 + (instancetype)showLoadingToView:(UIView *)view;
@@ -87,6 +88,10 @@ typedef NS_ENUM(NSInteger, DKProgressHUDMode) {
 + (void)showInfoToView:(UIView *)view;
 + (void)showInfoWithStatus:(NSString *)status;
 + (void)showInfoWithStatus:(NSString *)status toView:(UIView *)view;
+
+/** 根据回调消息模型创建一个HUD */
++ (void)showCallbackMessage:(DKCallbackMessage *)callbackMessage;
++ (void)showCallbackMessage:(DKCallbackMessage *)callbackMessage toView:(UIView *)view;
 
 + (void)dismiss;
 + (void)dismissForView:(UIView *)view;

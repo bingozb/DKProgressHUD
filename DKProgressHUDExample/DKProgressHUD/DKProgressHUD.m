@@ -190,6 +190,30 @@
     [self showStatus:status statusImage:DKProgressHUDInfoImageName view:view];
 }
 
+/**** Callback ****/
+
++ (void)showCallbackMessage:(DKCallbackMessage *)callbackMessage
+{
+    if (callbackMessage.successMessage.length) {
+        [self showSuccessWithStatus:callbackMessage.successMessage];
+    } else if (callbackMessage.infoMessage.length) {
+        [self showInfoWithStatus:callbackMessage.infoMessage];
+    } else if (callbackMessage.errorMessage.length) {
+        [self showErrorWithStatus:callbackMessage.errorMessage];
+    }
+}
+
++ (void)showCallbackMessage:(DKCallbackMessage *)callbackMessage toView:(UIView *)view
+{
+    if (callbackMessage.successMessage.length) {
+        [self showSuccessWithStatus:callbackMessage.successMessage toView:view];
+    } else if (callbackMessage.infoMessage.length) {
+        [self showInfoWithStatus:callbackMessage.infoMessage toView:view];
+    } else if (callbackMessage.errorMessage.length) {
+        [self showErrorWithStatus:callbackMessage.errorMessage toView:view];
+    }
+}
+
 /**** Dismiss ****/
 
 + (void)dismiss

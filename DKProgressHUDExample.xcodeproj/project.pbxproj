@@ -17,6 +17,7 @@
 		D795B6AC1DA931FA005780F1 /* DKProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D795B6A51DA931FA005780F1 /* DKProgressHUD.bundle */; };
 		D795B6AD1DA931FA005780F1 /* DKProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D795B6A71DA931FA005780F1 /* DKProgressHUD.m */; };
 		D795B6AF1DA931FA005780F1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D795B6AB1DA931FA005780F1 /* MBProgressHUD.m */; };
+		D7FDBFA71DBA1B4A00E5E3E6 /* DKCallbackMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FDBFA61DBA1B4A00E5E3E6 /* DKCallbackMessage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		D795B6A71DA931FA005780F1 /* DKProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKProgressHUD.m; sourceTree = "<group>"; };
 		D795B6AA1DA931FA005780F1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		D795B6AB1DA931FA005780F1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		D7FDBFA51DBA1B4A00E5E3E6 /* DKCallbackMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKCallbackMessage.h; sourceTree = "<group>"; };
+		D7FDBFA61DBA1B4A00E5E3E6 /* DKCallbackMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKCallbackMessage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,8 @@
 				D795B6A71DA931FA005780F1 /* DKProgressHUD.m */,
 				D7695BC11DAA131600EF6E55 /* DKProgressHUDConst.h */,
 				D7695BC21DAA131600EF6E55 /* DKProgressHUDConst.m */,
+				D7FDBFA51DBA1B4A00E5E3E6 /* DKCallbackMessage.h */,
+				D7FDBFA61DBA1B4A00E5E3E6 /* DKCallbackMessage.m */,
 				D795B6AA1DA931FA005780F1 /* MBProgressHUD.h */,
 				D795B6AB1DA931FA005780F1 /* MBProgressHUD.m */,
 			);
@@ -189,6 +194,7 @@
 				D730D9301DA9359600BE24AD /* DKExampleViewController.m in Sources */,
 				D7695BC31DAA131600EF6E55 /* DKProgressHUDConst.m in Sources */,
 				D795B6AF1DA931FA005780F1 /* MBProgressHUD.m in Sources */,
+				D7FDBFA71DBA1B4A00E5E3E6 /* DKCallbackMessage.m in Sources */,
 				D795B68F1DA9273A005780F1 /* main.m in Sources */,
 				D795B6AD1DA931FA005780F1 /* DKProgressHUD.m in Sources */,
 				D730D92C1DA9352700BE24AD /* AppDelegate.m in Sources */,
