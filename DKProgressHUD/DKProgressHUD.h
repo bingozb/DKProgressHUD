@@ -94,6 +94,7 @@ typedef NS_ENUM(NSInteger, DKProgressHUDMode) {
 + (void)showCallbackMessage:(DKCallbackMessage *)callbackMessage toView:(UIView *)view;
 
 + (void)dismiss;
++ (void)dismissForKeyWindow;
 + (void)dismissForView:(UIView *)view;
 
 @end

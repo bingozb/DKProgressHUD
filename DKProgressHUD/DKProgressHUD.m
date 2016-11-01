@@ -218,15 +218,19 @@
 
 + (void)dismiss
 {
+    [self dismissForKeyWindow];
+    
     [self dismissForView:nil];
+}
+
++ (void)dismissForKeyWindow
+{
+    UIView *keyWindow = [[UIApplication sharedApplication].windows lastObject];
+    [self hideHUDForView:keyWindow animated:YES];
 }
 
 + (void)dismissForView:(UIView *)view
 {
-    // 先把keyWindow上的HUD隐藏
-    UIView *keyWindow = [[UIApplication sharedApplication].windows lastObject];
-    [self hideHUDForView:keyWindow animated:YES];
-
     if (view) [self hideHUDForView:view animated:YES];
 }
 

@@ -14,17 +14,17 @@
 
 + (void)load
 {
-    Method willDisappearMethod = class_getInstanceMethod([self class], @selector(viewWillDisappear:));
-    Method dkWillDisappearMethod = class_getInstanceMethod(self, @selector(dk_viewWillDisappear:));
+    Method didDisappearMethod = class_getInstanceMethod([self class], @selector(viewDidDisappear:));
+    Method dkDidDisappearMethod = class_getInstanceMethod(self, @selector(dk_viewDidDisappear:));
     
-    method_exchangeImplementations(willDisappearMethod, dkWillDisappearMethod);
+    method_exchangeImplementations(didDisappearMethod, dkDidDisappearMethod);
 }
 
-- (void)dk_viewWillDisappear:(BOOL)animated
+- (void)dk_viewDidDisappear:(BOOL)animated
 {
     [DKProgressHUD dismissForView:self.view];
     
-    [self dk_viewWillDisappear:animated];
+    [self dk_viewDidDisappear:animated];
 }
 
 
