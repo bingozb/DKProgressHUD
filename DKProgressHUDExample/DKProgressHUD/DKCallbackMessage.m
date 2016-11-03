@@ -50,6 +50,14 @@
     return self;
 }
 
+- (instancetype)initWithDismiss
+{
+    if (self = [super init]) {
+        _dismiss = YES;
+    }
+    return self;
+}
+
 + (instancetype)callbackSuccessMessage:(NSString *)successMessage
 {
     return [[self alloc] initWithSuccessMessage:successMessage];
@@ -73,6 +81,11 @@
 + (instancetype)callbackProgressMessage:(NSString *)progressMessage
 {
     return [[self alloc] initWithProgressMessage:progressMessage];
+}
+
++ (instancetype)callbackDismiss
+{
+    return [[self alloc] initWithDismiss];
 }
 
 @end

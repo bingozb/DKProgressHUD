@@ -204,6 +204,8 @@
         [self showLoadingWithStatus:callbackMessage.loadingMessage];
     } else if (callbackMessage.progressMessage.length) {
         [self showProgressWithStatus:callbackMessage.progressMessage];
+    } else if (callbackMessage.dismiss) {
+        [self dismissForKeyWindow];
     }
 }
 
@@ -219,6 +221,8 @@
         [self showLoadingWithStatus:callbackMessage.loadingMessage toView:view];
     } else if (callbackMessage.progressMessage.length) {
         [self showProgressWithStatus:callbackMessage.progressMessage toView:view];
+    } else if (callbackMessage.dismiss) {
+        [self dismissForView:view];
     }
 }
 

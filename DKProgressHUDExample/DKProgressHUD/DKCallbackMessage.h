@@ -15,17 +15,20 @@
 @property (nonatomic, copy) NSString *errorMessage;
 @property (nonatomic, copy) NSString *loadingMessage;
 @property (nonatomic, copy) NSString *progressMessage;
+@property (nonatomic, assign, readonly) BOOL dismiss;
 
 - (instancetype)initWithSuccessMessage:(NSString *)successMessage;
 - (instancetype)initWithInfoMessage:(NSString *)infoMessage;
 - (instancetype)initWithErrorMessage:(NSString *)errorMessage;
 - (instancetype)initWithLoadingMessage:(NSString *)loadingMessage;
 - (instancetype)initWithProgressMessage:(NSString *)progressMessage;
+- (instancetype)initWithDismiss;
 
 + (instancetype)callbackSuccessMessage:(NSString *)successMessage;
 + (instancetype)callbackInfoMessage:(NSString *)infoMessage;
 + (instancetype)callbackErrorMessage:(NSString *)errorMessage;
 + (instancetype)callbackLoadingMessage:(NSString *)loadingMessage;
 + (instancetype)callbackProgressMessage:(NSString *)progressMessage;
++ (instancetype)callbackDismiss;
 
 @end
