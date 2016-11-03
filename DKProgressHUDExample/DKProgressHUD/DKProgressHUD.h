@@ -16,8 +16,9 @@ typedef NS_ENUM(NSInteger, DKProgressHUDStyle) {
 };
 
 typedef NS_ENUM(NSInteger, DKProgressHUDMode) {
-    DKProgressHUDModeDeterminateHorizontalBar = 2,  // 水平进度条
-    DKProgressHUDModeAnnularDeterminate             // 圆环进度条
+    DKProgressHUDModeDeterminate = 1,           // 圆饼进度条
+    DKProgressHUDModeDeterminateHorizontalBar,  // 水平进度条
+    DKProgressHUDModeAnnularDeterminate         // 圆环进度条
 };
 
 @interface DKProgressHUD : MBProgressHUD

@@ -19,7 +19,7 @@
 
 + (DKProgressHUDMode)progressHUDMode
 {
-    return DKProgressHUDModeAnnularDeterminate;
+    return DKProgressHUDModeDeterminate;
 }
 
 + (CGFloat)progressHUDIntervalDismiss

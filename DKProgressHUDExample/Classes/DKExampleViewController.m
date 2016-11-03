@@ -41,6 +41,7 @@
                 
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     self.hud = [DKProgressHUD showProgressWithStatus:@"Progress" toView:self.view];
+                    self.hud.detailsLabel.text = @"0.0";
                     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(testProgress) userInfo:nil repeats:YES];
                 });
             });
@@ -52,6 +53,7 @@
 {
     _progress += 0.01;
     [self.hud setProgress:_progress];
+    self.hud.detailsLabel.text = [NSString stringWithFormat:@"%.2f",_progress];
     if (_progress >= 1) {
         _progress = 0;
         [self.timer invalidate];
