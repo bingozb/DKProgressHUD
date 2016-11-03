@@ -200,6 +200,10 @@
         [self showInfoWithStatus:callbackMessage.infoMessage];
     } else if (callbackMessage.errorMessage.length) {
         [self showErrorWithStatus:callbackMessage.errorMessage];
+    } else if (callbackMessage.loadingMessage.length) {
+        [self showLoadingWithStatus:callbackMessage.loadingMessage];
+    } else if (callbackMessage.progressMessage.length) {
+        [self showProgressWithStatus:callbackMessage.progressMessage];
     }
 }
 
@@ -211,6 +215,10 @@
         [self showInfoWithStatus:callbackMessage.infoMessage toView:view];
     } else if (callbackMessage.errorMessage.length) {
         [self showErrorWithStatus:callbackMessage.errorMessage toView:view];
+    } else if (callbackMessage.loadingMessage.length) {
+        [self showLoadingWithStatus:callbackMessage.loadingMessage toView:view];
+    } else if (callbackMessage.progressMessage.length) {
+        [self showProgressWithStatus:callbackMessage.progressMessage toView:view];
     }
 }
 
