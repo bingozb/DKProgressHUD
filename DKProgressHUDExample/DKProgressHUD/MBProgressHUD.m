@@ -128,7 +128,11 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
 
 - (id)initWithView:(UIView *)view {
     NSAssert(view, @"View must not be nil.");
-    return [self initWithFrame:view.bounds];
+    if ([view isKindOfClass:[UIScrollView class]]) {
+        return [self initWithFrame:CGRectMake(0, -64 - view.frame.origin.y, view.bounds.size.width, view.bounds.size.height)];
+    } else {
+        return [self initWithFrame:view.bounds];
+    }
 }
 
 - (void)dealloc {

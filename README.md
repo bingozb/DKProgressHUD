@@ -4,6 +4,10 @@ A simple second-dev of MBProgressHUD for Dankal_iOS.
 
 ****
 
+####效果图
+
+![img](https://github.com/bingozb/DKProgressHUD/blob/master/DKProgressHUDDemo.gif)
+
 ##背景
 
 - `SVProgressHUD`是单例模式，且HUD是show到keyWindow上的，这会导致不同控制器里使用HUD会相互冲突并引发许多问题，例如
